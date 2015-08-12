@@ -1,0 +1,251 @@
+$def with (title)
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>$title</title>
+
+<link rel="stylesheet" href="static/css/jstree-style.css" />
+<link rel="stylesheet" href="static/css/hawkeye-style.css" />
+<script type="text/javascript" src="static/scripts/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="static/scripts/jstree.js"></script>
+<script type="text/javascript" src="static/scripts/highcharts.js"></script>
+<script type="text/javascript" src="static/scripts/hawkeye.js"></script>
+
+<script>
+    jQuery(document).ready(function() {
+        hawkeye.Main();
+        console.log('done');
+    })
+</script>
+
+</head>
+
+<body>
+
+<div id="container">
+    <div id="header">
+        <table align="center">
+            <tr>
+                <td>
+        <div id="logo">
+            <img src="static/images/logo.jpg" width="50px" height="50px"/>
+        </div>
+                </td>
+                <td>
+        <div id="logo-title">
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HawkEye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> 
+        </div>
+                </td>
+                <td>
+        <div id="logo-subtitle">
+            Cluster Visualization Performance Analysis For MPP Database 
+        </div>
+                </td>
+            </tr>
+        </table> 
+    </div>
+
+    <div id="content">
+        <div id="left-pane">
+          <ul>
+            <li>Resource
+              <ul>
+                <li>Memory</li>
+                <li>CPU</li>
+                <li>Disk</li>
+                <li>Network</li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+              <li>Dimension
+              <ul>
+                  <li>Machine</li>
+                </ul>
+                <ul>
+                <li>Process
+                  <ul>
+                    <li>Postgres</li>
+                    <li>Postmaster</li>
+                    <li>ResourceMgr</li>
+                  </ul>
+                  </li>
+                  </ul>
+              </li>
+          </ul>
+          <ul>
+            <li>Management
+              <ul>
+                  <li>Configuration</li>
+              </ul>
+              <ul>
+                  <li>Hosts
+                      <ul>
+                        <li>host1(Master)</li> 
+                        <li>host2(Segment)</li> 
+                        <li>host3(Segment)</li> 
+                        <li>host4(Segment)</li> 
+                        <li>host5(Segment)</li> 
+                        <li>host6(Segment)</li> 
+                        <li>host7(Segment)</li> 
+                        <li>host8(Segment)</li> 
+                        <li>host9(Segment)</li> 
+                        <li>host10(Standby)</li> 
+                      </ul>
+                      </li>
+              </ul>
+
+            </li>
+          </ul>
+        </div>
+        
+        <div id="right-pane">
+            <div id="info">
+                <table>
+                    <tr>
+                        <td>
+                            <b>Resource Type:</b>
+                        </td>
+                        <td>
+                            <span id="resource-type">Memory</span>
+                        </td>
+                        <td>
+                            <b>Dimension:</b>
+                        </td>
+                        <td>
+                            <span id="dimension-type">Machine</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <b>Host Id Begin:</b>
+                        </td>
+                        <td>
+                            <input id="host-id-begin" type="text" size=20 value="1">
+                        </td>
+                        <td>
+                            <b>Host Id End:</b>
+                        </td>
+                        <td>
+                            <input id="host-id-end" type="text" size=20 value="10">
+                        </td>
+
+
+                        
+                        <td>
+                            <b>Host Group Size:</b>
+                        </td>
+                        <td>
+                            <select id="host-group">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=4>4</option>
+                                <option value=8>8</option>
+                            </select>
+                        </td>
+
+                        
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <b>Time Begin:</b>
+                        </td>
+                        <td>
+                            <input id="time-begin" type="text" size=20>
+                        </td>
+                        <td>
+                            <b>Time End:</b>
+                        </td>
+                        <td>
+                            <input id="time-end" type="text" size=20>
+                        </td>
+
+                        <td>
+                            <b>Time Interval:</b>
+                        </td>
+
+                         <td>
+                            <select id="time-interval">
+                                <option value=5>5s</option>
+                                <option value=10>10s</option>
+                                <option value=30>30s</option>
+                                <option value=60>1m</option>
+                                <option value=600>10m</option>
+                                <option value=3600>1h</option>
+                            </select>
+                        </td>
+                    </tr> 
+
+                    <tr>
+                        <td>
+                            <b>Chart Type:</b>
+                        </td>
+                        <td>
+                            <div id="chart-type">
+                                <select id="chart-type-select">
+                                    <option value="line">line</option>
+                                    <option value="column">bar</option>
+                                </select>
+                            </div>
+
+                        </td>
+                        <td>
+                            <b>Measure:</b>
+                        </td>
+                        <td>
+                            <div id="measure-type">
+                                <select id="measure-type-select">
+                                    <option value="avg">avg</option>
+                                    <option value="min">min</option>
+                                    <option value="max">max</option>
+                                    <option value="sum">sum</option>
+                                </select>
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <b>Action:</b>
+                        </td>
+
+                        <td>
+                            <div id="show-chart">
+                                <input id="chart-button" type="button" value="Show Chart" onclick="hawkeye.ShowChart()"/>
+                            </div>
+                        </td>
+
+                        <td>
+                            <b>Time Select:</b>
+                        </td>
+                        <td>
+                            <div id="show-chart-by-time">
+                                 <select id="chart-by-time-select">
+                                </select>
+                            </div>
+                        </td>
+
+                    </tr>
+                   </table>
+            </div>
+
+            
+
+            <div id="chart">
+                
+            </div>
+        </div>
+
+    </div>    
+
+
+
+
+</div>
+
+</body>
+</html>
